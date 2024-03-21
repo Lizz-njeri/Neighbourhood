@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 bg-white poster">
+            <button class="btn btn-sm btn-outline-info"><a
+                    href="{% url 'hood-details' user.profile.neighbourhood.id %}">&laquo Back</a></button>
+            <h3 class="text-center tt ">Create a Business to your hood</h3>
+            <form action="" method="post">
+                {% csrf_token%}
+                {% bootstrap_form businessform %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-sm btn-info">Save Business</button>
+                    <button type="button" class="btn btn-sm btn-danger " data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>'
+{% endblock %}

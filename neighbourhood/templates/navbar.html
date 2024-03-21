@@ -1,0 +1,65 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="container py-3">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
+                    role="img">
+                    <title>Neighborhood</title>
+                </svg>
+                <span class="font-weight-bolder text-white"><span class="text-white font-weight-bolder text-white"style="font-size:40px">N</span>eighborhood</span>
+            </a>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                <!-- <form role="search" action="" method="get" class="form-inline my-2 my-md-0">
+                    <input class="form-control ml-5" type="search" placeholder="Search" aria-label="Search">
+                </form> -->
+                <!-- <a class="navbar-brand mx-auto" href="/">Awwwards</a> -->
+                {% if user.is_authenticated %}
+                <form class="form-inline mr-5 text-white" method="get" action="{% url 'search' %}">
+                    {% csrf_token %}
+                    <div class="md-form my-0 text-white">
+                        <input class="form-control mr-sm-2 text-white" type="text" placeholder="Find Businesses" name="title" aria-label="Search">
+                    </div>
+                </form>
+                <a class="me-3 py-2 text-decoration-none mr-5 text-white" href="/">Home</a>
+                <a class="me-3 py-2 text-decoration-none mr-5 text-white" href="{% url 'hood' %}">Hoods</a>
+                <a href="{% url 'new-hood' %}"><button type="button" class="text-white btn btn-outline-info btn-sm mr-5">New Hood</button></a>
+                <div class="navbar-nav ms-auto">
+                    <a class="me-3 py-2 text-decoration-none dropdown"style="margin-top:-15px;">
+                        <a class=" dropdown-toggle" href="" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{% static 'images/user.png' %}" rel="stylesheet" type="text/css" width="35" height="40"></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown10">
+                            <a><a class="dropdown-item" href="{% url 'users-profile'%}">
+                                    <img src="{% static 'images/user.png' %}" rel="stylesheet" type="text/css" width="23">Profile</a>
+                            </a>
+                            <a><a class="dropdown-item" href="#"><img src="{% static 'images/password.png' %}" rel="stylesheet" type="text/css" viewBox="0 0 24 24"
+                                                        width="20">Change Passowrd</a>
+                                            </a>
+                            <a><a class="dropdown-item" href="{% url 'logout' %}"><img src="{% static 'images/logout.png' %}" rel="stylesheet"
+                                        type="text/css" viewBox="0 0 24 24" width="20">logout</a>
+                            </a>
+                    </a>
+                </div>
+                {% else %}
+                    <a class="me-3 py-2 text-decoration-none text-white" href="{% url 'hood' %}">Hoods</a>
+                    <a href="{% url 'login' %}"><button type="button" class="text-white btn btn-outline-info btn-sm">Login</button></a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

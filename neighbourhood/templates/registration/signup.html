@@ -1,0 +1,46 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container-fluid mb-4">
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5 m-auto text-white">
+            <div class="text-white" style="box-shadow: 0 4px 8px  whitesmoke;">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% if form.errors %}
+                <p>Some information might be incorrect</p>
+                {% endif %}
+
+                <div class="panel panel-default card-body">
+                    <div class="panel-heading">
+                        <h3 class="getstarted text-center font-weight-bold" style="font-size: 30px;">Get Started</h3>
+                    </div>
+                    <div class="panel-body text-white">
+                        <form action="{% url 'signup' %}" method="Post" class="text-white">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-info btn-md" value="Sign Up">
+                            </div>
+                            <input type="hidden" name="next" value="{{next}}">
+                        </form>
+                    </div>
+                    <p class="pl-5">Already a member? <a class="pl-2 btn btn-outline-info btn-sm"
+                            href="{% url 'login' %}">Login</a></p>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-1"></div>
+        
+        </div>
+    </div>
+</div>
+{% endblock content %}

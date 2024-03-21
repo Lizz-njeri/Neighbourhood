@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Neighborhood{% endblock title %}
+{% load static %}
+{% load bootstrap4 %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% block content %}
+<div class="container-fluid">
+    {% if user.is_authenticated %}
+    <div class="text-white text-center"id="front-page">
+        {% if user.profile.neighbourhood %}
+        <h1 style="margin-top:5%;">Enjoying your Neighbourhood?</h1>
+        <h5 style="margin-top:2%">Would you want to view Businesses && Alerts around?</h5>
+        <a href="{% url 'hood-details' user.profile.neighbourhood.id %}" class="btn btn-md btn-info mt-4">EXPLORE{{user.profile.neighbourhood.name}}</a>
+        {% else %}
+        <h1 style="margin-top:5%; font-size: 50px;">Welcome to the Neighborhood</h1>
+        <h5 style="margin-top:2%;  font-size: 30px;">Here we keep you informed!!</h5>
+        <div class="text-center mt-5">
+            <a href="{% url 'hood' %}" class="btn btn-lg btn-info centered-button">Join a Neighborhood!</a>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="container-fluid"  style="background-color: #ffff;">
+        <div class="row">
+            <div class="col-md-5 m-auto ">
+                    <h1 class="text-center font-weight-bolder text-dark" style="font-size: 50px;">
+                        WELCOME TO THE<br> NEIGHBORHOOD
+                    </h1>
+                    <br>
+                    <p class="lead text-dark text-center " style="font-size: 20px;">Be informed of anything and everything happening around you. Be updated</p>
+                    <br>
+                    <div class="text-center">
+                        <a href="{% url 'hood' %}" class="btn btn-lg btn-info centered-button">Pick Your Neighbourhood</a>
+                    </div>                    
+            </div>
+    
+            <div class="col-md-5 justify-content-center m-auto">
+                <img src="{% static 'images/page1.gif' %}" class="img-fluid" style="max-width: 100%;" alt="">
+            </div>
+        </div>
+    </div>
+    <section class="neighborhood-section text-white">
+        <div class="container">
+            <h1 class="lead font-bold text-center mt-3" style="font-size: 30px;">ABOUT US</h1>
+            <p class="text-center section-title mb-5 ">Stay Connected with Your Neighbors</p>
+            <div class="row">
+                <div class="col-md-5 justify-content-center m-auto">
+                    <img src="{% static 'images/n.jpg' %}" class="img-fluid" style="max-width: 100%;" alt="Neighborhood Image">
+                </div>
+                
+                <div class="col-md-5 m-auto">
+                    <p class="lead section-description">
+                        We keep you up to date on everything going on in your area. From handyman contact information to meeting notifications and even warnings. We also allows them to connect with other members of their community. Some of the Advantages of our platform are: 
+                    </p>
+                    <br>
+                    <div class="section-features ml-5">
+                        <div class="feature1">
+                        <div class="flex flex-row">
+                            <i class="fas fa-users"></i>
+                            <h5 class="lead font-bold ml-3 feature-descrih5tion">Connect with your neighbors</h5>: <br>
+                        </div><br>
+                        <i> Build strong relationships and foster a sense of community by connecting with other members in your neighborhood.</i>
+                        </div>
+                        <br>
+
+                        <div class="feature2">
+                        <div class="flex flex-row">
+                            <i class="fas fa-bullhorn"></i>
+                            <h5 class="lead font-bold ml-3 feature-description">Receive important notifications</h5>
+                        </div><br>
+                        <i>Stay informed about important announcements, upcoming events, and safety alerts in your area.</i>
+                        </div>
+
+                        <br>
+
+                        <div class="feature3">
+                        <div class="flex flex-row">
+                            <i class="fas fa-tools"></i>
+                            <h5 class="lead font-bold ml-3 feature-description">Access handyman contact information</h5>
+                        </div><br>
+                        <i>Find reliable and trusted handyman services within your neighborhood for any repairs or maintenance needs.</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% endif %}     
+</div>
+{% endblock content %}
